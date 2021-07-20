@@ -5,25 +5,29 @@ import com.notcat.patching.transformers.ITransformer;
 import javassist.ClassPool;
 import javassist.CtClass;
 
+import java.util.ArrayList;
 import java.util.Collections;
 
 public class DemoTransformer implements ITransformer {
 
-    //region Members Names
-    private final String RUNNABLE_CLASS_PATH = "com.xk72.charles.XaRp";
-    //endregion
-
     @Override
     public Iterable<TransformedClass> transform(ClassPool classPool) {
 
+        ArrayList<TransformedClass> transformedClasses = new ArrayList<>();
+
         try {
 
-            CtClass runnableClass = classPool.get(RUNNABLE_CLASS_PATH);
+            // Close runnable
+            CtClass runnableClass = classPool.get("com.xk72.charles.e");
             runnableClass.getDeclaredMethod("run").setBody("{}");
+            transformedClasses.add(TransformedClass.from(runnableClass));
 
-            return Collections.singletonList(
-                    new TransformedClass(RUNNABLE_CLASS_PATH, runnableClass.toBytecode())
-            );
+            // Startup splash window
+            runnableClass = classPool.get("com.xk72.charles.gui.Y");
+            runnableClass.getDeclaredMethod("run").setBody("{}");
+            transformedClasses.add(TransformedClass.from(runnableClass));
+
+            return transformedClasses;
 
         } catch(Exception exp) {
             exp.printStackTrace();

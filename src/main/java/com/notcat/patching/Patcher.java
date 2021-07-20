@@ -2,6 +2,10 @@ package com.notcat.patching;
 
 import com.notcat.patching.transformers.ITransformer;
 import javassist.ClassPool;
+import net.bytebuddy.ByteBuddy;
+import net.bytebuddy.description.type.TypeDefinition;
+import net.bytebuddy.description.type.TypeDescription;
+import net.bytebuddy.dynamic.scaffold.MethodGraph;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

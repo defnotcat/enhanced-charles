@@ -9,30 +9,23 @@
     <version>1.0</version>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy -->
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>1.10.22</version>
+        </dependency>
+
         <dependency>
             <groupId>org.javassist</groupId>
             <artifactId>javassist</artifactId>
-            <version>3.18.2-GA</version>
-        </dependency>
-        <dependency>
-            <groupId>jd</groupId>
-            <artifactId>jd-core</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>jd</groupId>
-            <artifactId>jd-common-ide</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>jd</groupId>
-            <artifactId>jd-common</artifactId>
-            <version>1.0</version>
+            <version>3.24.0-GA</version>
         </dependency>
     </dependencies>
 
@@ -44,7 +37,9 @@
                     <include>JA3Utils.class</include>
                     <include>JA3Utils$1.class</include>
                     <include>JA3Utils$2.class</include>
+                    <include>JA3Utils$3.class</include>
                     <include>CopyToClipboardAction$LoliScript.class</include>
+                    <include>CopyToClipboardAction$HeaderKeys.class</include>
                 </includes>
             </resource>
         </resources>
